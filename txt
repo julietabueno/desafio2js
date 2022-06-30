@@ -1,91 +1,53 @@
+//Desafio 2
 
 //declaro las variables
-let pesos = 0;
-let crypto = '';
-const valorBtc = 4951255.45;
-const valorEth = 284295.28;
-const valorDai = 239;
-let valorC;
+let pesos, crypto, valorC
+let repetir = "no"
 
 //creo la funcion para sacar el precio de la moneda para dividir los $
 const calculo = (pesos, valorC) => pesos / valorC;
 
 
-
-/* 
-//creo la funcion para sacar el precio de la moneda para dividir los $
-const calculo = (pesos, cryptomoneda) => pesos / cryptomoneda;
-function valorCrypto (
-    switch () {
-        case "btc":
-            precioC = valorBtc;
-            break
-        case "eth":
-            precioC = valorEth;
-            break
-        case "dai":
-            precioC = valorDai;
-            break
-        default:
-            alert("La compra no pudo ser realizada")
-    }
-
-)//agregar el switch de la moneda)
-
-
-
-
-while {//Pido al usuario que ingrese la cantidad de $ que desea invertir y que moneda quiere comprar
+do {
     pesos = parseFloat(prompt("Ingrese la cantidad de pesos que desea Invertir"));
-    crypto = prompt("Ingrese la cryptomoneda que desea adquirir: BTC, ETH o DAI").toLowerCase();
 
     //Pido otro monto si no es un numero
     if (isNaN(pesos)) {
         alert("Por favor ingrese un monto válido.")
     }
+
+    crypto = (prompt("Ingrese la cryptomoneda que desea adquirir: BTC, ETH o USDC")).toLowerCase();
+
     // pido que ingrese nuevamente la cryptomoneda si no es valida
-    if ((crypto != "btc") && (crypto != "eth") && (crypto != "dai")) {
+    if ((crypto != "btc") && (crypto != "eth") && (crypto != "usdc")) {
         alert("Por favor ingrese una cryptomoneda válida.")
     }
-
-    let precioC = switch (crypto) {
+    //le doy un valor a cada crypto
+    switch (crypto) {
         case "btc":
-            precioC = valorBtc;
+            valorC = 4951255.45
             break
         case "eth":
-            precioC = valorEth;
+            valorC = 284295.28
             break
-        case "dai":
-            precioC = valorDai;
+        case "usdc":
+            valorC = 239
             break
         default:
             alert("La compra no pudo ser realizada")
     }
 
 
-
-    alert(`Usted esta por comprar ${(pesos / precioC)} ${(crypto).toUpperCase()}`)
-
-} while (pesos >= 0);
-
-
-
-/* 
-alert(`Usted va a comprar ${valor(crypto)}  ${crypto}`)
- */
-/* resultado = switch (crypto) {
-    case "btc":
-        alert(`Usted va a comprar ${dividir(pesos, valorBtc)} BTC`)
-        break
-    case "eth":
-        alert(`Usted va a comprar ${dividir(pesos, valorEth)} ETH`)
-        break
-    case "dai":
-        alert(`Usted va a comprar ${dividir(pesos, valorDai)} DAI`)
-        break
-    case "usdc":
-        alert(`Usted va a comprar ${dividir(pesos, valorUsdc)} USDC`)
-        break
-    default:
+    //Me da el mensaje de cuanto puedo comprar de la moneda elegida
+    if (isNaN(calculo(pesos, valorC))) {
         alert("La compra no pudo ser realizada")
-} */ 
+    } else if ((crypto != "btc") && (crypto != "eth") && (crypto != "usdc")) {
+
+        alert("La compra no pudo ser realizada")
+    } else {
+        alert(`Usted esta por comprar ${calculo(pesos, valorC)} ${(crypto).toUpperCase()}`)
+    }
+
+    //Le pregunto al usuario si desea repetir la operacion
+    repetir = prompt("Desea repetir la operacion? si - no").toLowerCase()
+} while (repetir == "si");
