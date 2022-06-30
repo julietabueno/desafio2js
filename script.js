@@ -8,7 +8,7 @@ const calculo = (pesos, valorC) => pesos / valorC;
 
 do {
     pesos = parseFloat(prompt("Ingrese la cantidad de pesos que desea Invertir"));
-    crypto = prompt("Ingrese la cryptomoneda que desea adquirir: BTC, ETH o USDC").toLowerCase();
+    crypto = (prompt("Ingrese la cryptomoneda que desea adquirir: BTC, ETH o USDC")).toLowerCase();
 
     //Pido otro monto si no es un numero
     if (isNaN(pesos)) {
@@ -19,6 +19,8 @@ do {
     if ((crypto != "btc") && (crypto != "eth") && (crypto != "usdc")) {
         alert("Por favor ingrese una cryptomoneda válida.")
     }
+
+} while (pesos >= 0) {
 
     //le doy un valor a cada crypto
     switch (crypto) {
@@ -34,11 +36,6 @@ do {
         default:
             alert("La compra no pudo ser realizada")
     }
-
-
-
-} while (pesos >= 0) {
-
     //Me da el mensaje de cuanto puedo comprar de la moneda elegida
-    alert(`Usted esta por comprar ${calculo} ${(crypto).toUpperCase()}`)
+    alert(`Usted esta por comprar ${calculo(pesos,valorC)} ${(crypto).toUpperCase()}`)
 }
