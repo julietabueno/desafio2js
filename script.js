@@ -1,4 +1,4 @@
-//Desafio 2
+///Desafio 2
 
 //declaro las variables
 let pesos, crypto, valorC
