@@ -2,9 +2,11 @@
 
 //declaro las variables
 let pesos, crypto, valorC
+let repetir = "no"
 
 //creo la funcion para sacar el precio de la moneda para dividir los $
 const calculo = (pesos, valorC) => pesos / valorC;
+
 
 do {
     pesos = parseFloat(prompt("Ingrese la cantidad de pesos que desea Invertir"));
@@ -35,9 +37,17 @@ do {
             alert("La compra no pudo ser realizada")
     }
 
-} while (pesos >= 0) {
-
 
     //Me da el mensaje de cuanto puedo comprar de la moneda elegida
-    alert(`Usted esta por comprar ${calculo(pesos, valorC)} ${(crypto).toUpperCase()}`)
-}
+    if (isNaN(calculo(pesos, valorC))) {
+        alert("La compra no pudo ser realizada")
+    } else if ((crypto != "btc") && (crypto != "eth") && (crypto != "usdc")) {
+
+        alert("La compra no pudo ser realizada")
+    } else {
+        alert(`Usted esta por comprar ${calculo(pesos, valorC)} ${(crypto).toUpperCase()}`)
+    }
+
+    //Le pregunto al usuario si desea repetir la operacion
+    repetir = prompt("Desea repetir la operacion? si - no").toLowerCase()
+} while (repetir == "si");
